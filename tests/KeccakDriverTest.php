@@ -7,7 +7,7 @@ namespace Tests;
 use Cryptothree\CryptoAddressValidator\Contracts\DriverConfig;
 use Cryptothree\CryptoAddressValidator\Drivers\KeccakDriver;
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
-use Cryptothree\CryptoAddressValidator\Validator;
+use Cryptothree\CryptoAddressValidator\CryptoAddressValidator;
 
 /**
  * @coversDefaultClass \Cryptothree\CryptoAddressValidator\Drivers\KeccakDriver
@@ -28,7 +28,7 @@ class KeccakDriverTest extends TestCase
     {
         $config = [new DriverConfig(KeccakDriver::class)];
 
-        $validator = new Validator(CurrencyEnum::ETH->value, $config, $net === 'mainnet');
+        $validator = new CryptoAddressValidator(CurrencyEnum::ETH, $config, $net === 'mainnet');
 
         self::assertEquals($expected, $validator->isValid($address));
     }

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Tests;
 
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
-use Cryptothree\CryptoAddressValidator\Validator;
+use Cryptothree\CryptoAddressValidator\CryptoAddressValidator;
 
 /**
- * @coversDefaultClass \Cryptothree\CryptoAddressValidator\Validator
+ * @coversDefaultClass \Cryptothree\CryptoAddressValidator\CryptoAddressValidator
  */
 class ValidatorTest extends TestCase
 {
@@ -29,7 +29,7 @@ class ValidatorTest extends TestCase
 
         $options = $config[$currency->value];
 
-        $validator = new Validator($currency->value, $options, $net === 'mainnet');
+        $validator = new CryptoAddressValidator($currency, $options, $net === 'mainnet');
 
         $this->assertEquals(
             $expected,

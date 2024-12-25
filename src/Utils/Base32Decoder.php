@@ -6,6 +6,7 @@ namespace Cryptothree\CryptoAddressValidator\Utils;
 
 use Cryptothree\CryptoAddressValidator\Exception\Base32Exception;
 use Cryptothree\CryptoAddressValidator\Exception\InvalidChecksumException;
+
 use function array_key_exists;
 use function array_slice;
 use function array_values;
@@ -15,12 +16,10 @@ use function gmp_div;
 use function gmp_init;
 use function gmp_mul;
 use function gmp_pow;
-use function gmp_strval;
 use function gmp_xor;
 use function ord;
 use function pack;
 use function strlen;
-use function strtolower;
 use function unpack;
 
 class Base32Decoder
@@ -56,16 +55,15 @@ class Base32Decoder
         -1, 29, -1, 24, 13, 25, 9, 8, 23, -1, 18, 22, 31, 27, 19, -1,
         1, 0, 3, 16, 11, 28, 12, 14, 6, 4, 2, -1, -1, -1, -1, -1,
         -1, 29, -1, 24, 13, 25, 9, 8, 23, -1, 18, 22, 31, 27, 19, -1,
-        1, 0, 3, 16, 11, 28, 12, 14, 6, 4, 2, -1, -1, -1, -1, -1
+        1, 0, 3, 16, 11, 28, 12, 14, 6, 4, 2, -1, -1, -1, -1, -1,
     ];
 
     /**
      * @var array
      */
-    protected static array $generator = [0x98f2bc8e61, 0x79b76d99e2, 0xf33e5fb3c4, 0xae2eabe2a8, 0x1e4f43e470];
+    protected static array $generator = [0x98F2BC8E61, 0x79B76D99E2, 0xF33E5FB3C4, 0xAE2EABE2A8, 0x1E4F43E470];
 
     /**
-     * {@inheritDoc}
      * @see GmpMathInterface::bitwiseAnd()
      */
     protected static function bitwiseAnd($first, $other)
@@ -74,7 +72,6 @@ class Base32Decoder
     }
 
     /**
-     * {@inheritDoc}
      * @see GmpMathInterface::rightShift()
      */
     protected static function rightShift($number, $positions)
@@ -84,7 +81,6 @@ class Base32Decoder
     }
 
     /**
-     * {@inheritDoc}
      * @see GmpMathInterface::bitwiseXor()
      */
     protected static function bitwiseXor($first, $other)
@@ -93,7 +89,6 @@ class Base32Decoder
     }
 
     /**
-     * {@inheritDoc}
      * @see GmpMathInterface::leftShift()
      */
     protected static function leftShift($number, $positions)
@@ -127,8 +122,7 @@ class Base32Decoder
     }
 
     /**
-     * @param string $prefix
-     *
+     * @param  string  $prefix
      * @return resource
      */
     public static function prefixChk(string $prefix)
@@ -136,16 +130,17 @@ class Base32Decoder
         $chk = gmp_init(1);
         $length = strlen($prefix);
         for ($i = 0; $i < $length; $i++) {
-            $char = ord($prefix[$i]) & 0x1f;
+            $char = ord($prefix[$i]) & 0x1F;
             $chk = self::bitwiseXor(self::polyModStep($chk), gmp_init($char, 10));
         }
+
         return self::polyModStep($chk);
     }
 
     /**
-     * @param string $string - base32 string
-     *
+     * @param  string  $string  - base32 string
      * @return array<int, array<int, mixed>|string> - array<prefix, array<5 bit int>>
+     *
      * @throws Base32Exception
      * @throws InvalidChecksumException
      */
@@ -153,14 +148,14 @@ class Base32Decoder
     {
         $stringLen = strlen($string);
         if ($stringLen < 8) {
-            throw new Base32Exception("Address too short");
+            throw new Base32Exception('Address too short');
         }
 
         if ($stringLen > 90) {
-            throw new Base32Exception("Address too long");
+            throw new Base32Exception('Address too long');
         }
 
-        $chars = array_values(unpack("C*", $string));
+        $chars = array_values(unpack('C*', $string));
 
         $haveUpper = $haveLower = false;
         $idxSeparator = -1;
@@ -169,14 +164,14 @@ class Base32Decoder
         for ($i = 0; $i < $stringLen; $i++) {
             $x = $chars[$i];
             if ($x < 33 || $x > 126) {
-                throw new Base32Exception("Out of range character in base32 string");
+                throw new Base32Exception('Out of range character in base32 string');
             }
 
-            if ($x >= 0x61 && $x <= 0x7a) {
+            if ($x >= 0x61 && $x <= 0x7A) {
                 $haveLower = true;
             }
 
-            if ($x >= 0x41 && $x <= 0x5a) {
+            if ($x >= 0x41 && $x <= 0x5A) {
                 $haveUpper = true;
                 $x = $chars[$i] = $x + 0x20;
             }
@@ -187,24 +182,24 @@ class Base32Decoder
         }
 
         if ($haveUpper && $haveLower) {
-            throw new Base32Exception("Data contains mixture of higher/lower case characters");
+            throw new Base32Exception('Data contains mixture of higher/lower case characters');
         }
 
         if ($hasPrefix && $idxSeparator === -1) {
-            throw new Base32Exception("Missing separator character");
+            throw new Base32Exception('Missing separator character');
         }
         if ($hasPrefix && $idxSeparator === 0) {
-            throw new Base32Exception("Missing prefix");
+            throw new Base32Exception('Missing prefix');
         }
 
         if (($idxSeparator + 7) > $stringLen) {
-            throw new Base32Exception("Invalid location for separator character");
+            throw new Base32Exception('Invalid location for separator character');
         }
 
-        $prefix = "";
+        $prefix = '';
 
         foreach (array_slice($chars, 0, $idxSeparator) as $byte) {
-            $prefix .= pack("C*", $byte);
+            $prefix .= pack('C*', $byte);
         }
 
         $chk = self::prefixChk($prefix);
@@ -212,8 +207,8 @@ class Base32Decoder
         $words = [];
         for ($i = $idxSeparator + 1; $i < $stringLen; $i++) {
             $char = $chars[$i];
-            if (!array_key_exists($char, self::$charsetKey)) {
-                throw new Base32Exception("Unknown character in address");
+            if (! array_key_exists($char, self::$charsetKey)) {
+                throw new Base32Exception('Unknown character in address');
             }
             $word = self::$charsetKey[$char];
             $chk = self::bitwiseXor(self::polyModStep($chk), gmp_init($word));
@@ -221,12 +216,12 @@ class Base32Decoder
         }
 
         if ($hasPrefix && gmp_cmp($chk, gmp_init(1)) !== 0) {
-            throw new InvalidChecksumException();
+            throw new InvalidChecksumException;
         }
 
         return [
             $prefix,
-            array_slice($words, 0, -self::$checksumLen)
+            array_slice($words, 0, -self::$checksumLen),
         ];
     }
 
@@ -237,6 +232,7 @@ class Base32Decoder
      * @param  int  $numBytes
      * @param  int[]  $bytes
      * @return int[]
+     *
      * @throws Base32Exception
      */
     public static function toWords($numBytes, array $bytes): array
@@ -251,6 +247,7 @@ class Base32Decoder
      * @param  int  $numWords
      * @param  int[]  $words
      * @return int[]
+     *
      * @throws Base32Exception
      */
     public static function fromWords($numWords, array $words): array
@@ -267,6 +264,7 @@ class Base32Decoder
      * @param  int  $toBits  - requested word size (bit count)
      * @param  bool  $pad  - whether to pad (only when encoding)
      * @return int[]
+     *
      * @throws Base32Exception
      */
     protected static function convertBits(array $data, $inLen, $fromBits, $toBits, $pad = true): array

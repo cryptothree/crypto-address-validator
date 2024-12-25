@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Cryptothree\CryptoAddressValidator;
 
-use Generator;
 use Cryptothree\CryptoAddressValidator\Contracts\Driver;
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
 use Cryptothree\CryptoAddressValidator\Exception\AddressValidationException;
+use Generator;
+
 use function app;
 use function config;
 
@@ -15,10 +16,9 @@ readonly class Validator implements Contracts\Validator
 {
     public function __construct(
         private string $chain,
-        private array  $options,
-        private bool   $isMainnet = true
-    ) {
-    }
+        private array $options,
+        private bool $isMainnet = true
+    ) {}
 
     public static function make(CurrencyEnum $currency): Validator
     {
@@ -27,13 +27,13 @@ readonly class Validator implements Contracts\Validator
 
     public function isValid(?string $address): bool
     {
-        if (!$address) {
+        if (! $address) {
             return false;
         }
 
         $drivers = $this->getDrivers();
         // if there is no drivers we force address to be valid
-        if (null === $drivers || !$drivers->valid()) {
+        if ($drivers === null || ! $drivers->valid()) {
             return true;
         }
 
@@ -42,13 +42,13 @@ readonly class Validator implements Contracts\Validator
 
     public function validate(?string $address): void
     {
-        if (!$address) {
+        if (! $address) {
             return;
         }
 
         $drivers = $this->getDrivers();
         // if there is no drivers we force address to be valid
-        if (null === $drivers || !$drivers->valid()) {
+        if ($drivers === null || ! $drivers->valid()) {
             return;
         }
 
@@ -58,7 +58,7 @@ readonly class Validator implements Contracts\Validator
             throw new AddressValidationException($this->chain, $address, false);
         }
 
-        if (!$driver->check($address)) {
+        if (! $driver->check($address)) {
             throw new AddressValidationException($this->chain, $address, true);
         }
     }

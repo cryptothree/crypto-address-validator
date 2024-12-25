@@ -16,12 +16,12 @@ class KeccakDriverTest extends TestCase
 {
     /**
      * @covers ::check
+     *
      * @dataProvider addressesProvider
      *
-     * @param string $net
-     * @param bool   $expected
-     * @param string $address
-     *
+     * @param  string  $net
+     * @param  bool  $expected
+     * @param  string  $address
      * @return void
      */
     public function test_keccak_driver(string $net, bool $expected, string $address): void

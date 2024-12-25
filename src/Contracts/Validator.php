@@ -9,8 +9,7 @@ interface Validator
     public function isValid(?string $address): bool;
 
     /**
-     * @param string|null $address
-     *
+     * @param  string|null  $address
      * @return void
      *
      * @throws AddressValidationException

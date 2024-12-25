@@ -8,7 +8,5 @@ use Cryptothree\CryptoAddressValidator\Contracts\Driver;
 
 abstract class AbstractDriver implements Driver
 {
-    public function __construct(protected readonly array $options)
-    {
-    }
+    public function __construct(protected readonly array $options) {}
 }

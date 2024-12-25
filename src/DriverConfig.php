@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cryptothree\CryptoAddressValidator;
 
 use Cryptothree\CryptoAddressValidator\Drivers\AbstractDriver;
+
 use function class_exists;
 
 /**
@@ -13,21 +14,19 @@ use function class_exists;
 readonly class DriverConfig
 {
     /**
-     * @param class-string<T> $driver
-     * @param array $mainnet
-     * @param array $testnet
+     * @param  class-string<T>  $driver
+     * @param  array  $mainnet
+     * @param  array  $testnet
      */
     public function __construct(
         private string $driver,
         private array $mainnet = [],
         private array $testnet = []
-    )
-    {
-    }
+    ) {}
 
     public function makeDriver(bool $isMainNet): ?AbstractDriver
     {
-        if (!class_exists($this->driver)) {
+        if (! class_exists($this->driver)) {
             return null;
         }
 

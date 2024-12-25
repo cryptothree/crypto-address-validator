@@ -7,5 +7,6 @@ namespace Cryptothree\CryptoAddressValidator\Contracts;
 interface Driver
 {
     public function match(string $address): bool;
+
     public function check(string $address): bool;
 }

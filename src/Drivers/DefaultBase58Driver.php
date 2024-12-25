@@ -13,12 +13,12 @@ class DefaultBase58Driver extends Base58Driver
     public function check(string $address): bool
     {
         $addressVersion = $this->options[$address[0]] ?? null;
-        if (null === $addressVersion) {
+        if ($addressVersion === null) {
             return false;
         }
 
         $calculatedAddressVersion = $this->getVersion($address);
-        if (null === $calculatedAddressVersion) {
+        if ($calculatedAddressVersion === null) {
             return false;
         }
 

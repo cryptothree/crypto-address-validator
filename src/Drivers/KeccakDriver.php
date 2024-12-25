@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cryptothree\CryptoAddressValidator\Drivers;
 
 use Cryptothree\CryptoAddressValidator\Utils\KeccakDecoder;
+
 use function intval;
 use function strtoupper;
 
@@ -33,6 +34,6 @@ class KeccakDriver extends KeccakStrictDriver
             }
         }
 
-        return '0x' . $checksumAddress;
+        return '0x'.$checksumAddress;
     }
 }

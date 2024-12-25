@@ -18,7 +18,7 @@ return [
         new DriverConfig(
             Drivers\Base32Driver::class,
             ['bitcoincash:' => null],
-            ['bchtest:' => null, 'bchreg:' => null,]
+            ['bchtest:' => null, 'bchreg:' => null]
         ),
         new DriverConfig(
             Drivers\DefaultBase58Driver::class,
@@ -48,7 +48,7 @@ return [
             Drivers\CborDriver::class,
             ['A' => 33, 'D' => 66],
             ['2' => 40, '3' => 73],
-        )
+        ),
     ],
     CurrencyEnum::DASHCOIN->value => [
         new DriverConfig(
@@ -61,7 +61,7 @@ return [
         new DriverConfig(
             Drivers\DefaultBase58Driver::class,
             ['D' => '1E', '9' => '16', 'A' => '16'],
-            ['n' => '71', 'm' => '6F', '2' => 'C4',],
+            ['n' => '71', 'm' => '6F', '2' => 'C4'],
         ),
     ],
     CurrencyEnum::EOS->value => [
@@ -80,7 +80,7 @@ return [
             Drivers\Bech32Driver::class,
             ['ltc' => null],
             ['tltc' => null, 'rltc' => null]
-        )
+        ),
     ],
     CurrencyEnum::RIPPLE->value => [
         new DriverConfig(

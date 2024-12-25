@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Cryptothree\CryptoAddressValidator\Drivers;
 
-use Illuminate\Support\Str;
 use Cryptothree\CryptoAddressValidator\Utils\Base32Decoder;
+use Illuminate\Support\Str;
 use RuntimeException;
 use Throwable;
+
 use function array_flip;
 use function array_key_exists;
 use function array_keys;
@@ -16,7 +17,6 @@ use function implode;
 use function pack;
 use function preg_match;
 use function sprintf;
-use function str_contains;
 use function strtolower;
 
 class Base32Driver extends AbstractDriver
@@ -69,43 +69,42 @@ class Base32Driver extends AbstractDriver
     protected function extractPayload(int $numBytes, array $payloadBytes): array
     {
         if ($numBytes < 1) {
-            throw new RuntimeException("Empty base32 string");
+            throw new RuntimeException('Empty base32 string');
         }
 
         [$scriptType, $hashLengthBits] = $this->decodeVersion($payloadBytes[0]);
 
         if (($hashLengthBits / 8) !== $numBytes - 1) {
-            throw new RuntimeException("Hash length does not match version");
+            throw new RuntimeException('Hash length does not match version');
         }
 
-        $hash = "";
+        $hash = '';
 
         foreach (array_slice($payloadBytes, 1) as $byte) {
-            $hash .= pack("C*", $byte);
+            $hash .= pack('C*', $byte);
         }
 
         return [$scriptType, $hash];
     }
 
-
     protected function decodeVersion(int $version): array
     {
         if (($version >> 7) & 1) {
-            throw new RuntimeException("Invalid version - MSB is reserved");
+            throw new RuntimeException('Invalid version - MSB is reserved');
         }
 
-        $scriptMarkerBits = ($version >> 3) & 0x1f;
+        $scriptMarkerBits = ($version >> 3) & 0x1F;
         $hashMarkerBits = ($version & 0x07);
 
         $hashBitsMap = array_flip(self::$hashBits);
-        if (!array_key_exists($hashMarkerBits, $hashBitsMap)) {
-            throw new RuntimeException("Invalid version or hash length");
+        if (! array_key_exists($hashMarkerBits, $hashBitsMap)) {
+            throw new RuntimeException('Invalid version or hash length');
         }
         $hashLength = $hashBitsMap[$hashMarkerBits];
 
         $scriptType = match ($scriptMarkerBits) {
-            0 => "pubkeyhash",
-            1 => "scripthash",
+            0 => 'pubkeyhash',
+            1 => 'scripthash',
             default => throw new RuntimeException('Invalid version or script type'),
         };
 

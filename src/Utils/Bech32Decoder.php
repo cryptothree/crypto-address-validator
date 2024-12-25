@@ -4,6 +4,7 @@ namespace Cryptothree\CryptoAddressValidator\Utils;
 
 use Cryptothree\CryptoAddressValidator\Exception\Bech32Exception;
 use RuntimeException;
+
 use function array_merge;
 use function array_slice;
 use function array_values;
@@ -17,7 +18,8 @@ use function unpack;
  */
 class Bech32Decoder
 {
-    public const GENERATOR = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3];
+    public const GENERATOR = [0x3B6A57B2, 0x26508E6D, 0x1EA119FA, 0x3D4233DD, 0x2A1462B3];
+
     public const CHARKEY_KEY = [
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
@@ -26,21 +28,24 @@ class Bech32Decoder
         -1, 29, -1, 24, 13, 25,  9,  8, 23, -1, 18, 22, 31, 27, 19, -1,
         1,  0,  3, 16, 11, 28, 12, 14,  6,  4,  2, -1, -1, -1, -1, -1,
         -1, 29, -1, 24, 13, 25,  9,  8, 23, -1, 18, 22, 31, 27, 19, -1,
-        1,  0,  3, 16, 11, 28, 12, 14,  6,  4,  2, -1, -1, -1, -1, -1
+        1,  0,  3, 16, 11, 28, 12, 14,  6,  4,  2, -1, -1, -1, -1, -1,
     ];
+
     public const BECH32_POLY = 1;
-    public const BECH32M_POLY = 0x2bc830a3;
+
+    public const BECH32M_POLY = 0x2BC830A3;
+
     private const ALLOWED_POLY = [
         self::BECH32_POLY,
         self::BECH32M_POLY,
     ];
+
     /**
      * Validates a bech32 string and returns [$hrp, $dataChars] if
      * the conversion was successful. An exception is thrown on invalid
      * data.
      *
-     * @param string $sBech The bech32 encoded string
-     *
+     * @param  string  $sBech  The bech32 encoded string
      * @return array Returns [$hrp, $dataChars]
      *
      * @throws Bech32Exception
@@ -57,9 +62,9 @@ class Bech32Decoder
     }
 
     /**
-     * @param string $sBech The bech32 encoded string
-     *
+     * @param  string  $sBech  The bech32 encoded string
      * @return array Returns [$hrp, $dataChars]
+     *
      * @throws Bech32Exception
      * @throws Bech32Exception
      */
@@ -68,7 +73,7 @@ class Bech32Decoder
         $length = strlen($sBech);
 
         if ($length < 8) {
-            throw new Bech32Exception("Bech32 string is too short");
+            throw new Bech32Exception('Bech32 string is too short');
         }
 
         $chars = array_values(unpack('C*', $sBech));
@@ -84,11 +89,11 @@ class Bech32Decoder
                 throw new Bech32Exception('Out of range character in bech32 string');
             }
 
-            if ($x >= 0x61 && $x <= 0x7a) {
+            if ($x >= 0x61 && $x <= 0x7A) {
                 $haveLower = true;
             }
 
-            if ($x >= 0x41 && $x <= 0x5a) {
+            if ($x >= 0x41 && $x <= 0x5A) {
                 $haveUpper = true;
                 $x = $chars[$i] = $x + 0x20;
             }
@@ -104,18 +109,18 @@ class Bech32Decoder
         }
 
         if ($positionOne === -1) {
-            throw new Bech32Exception("Missing separator character");
+            throw new Bech32Exception('Missing separator character');
         }
 
         if ($positionOne < 1) {
-            throw new Bech32Exception("Empty HRP");
+            throw new Bech32Exception('Empty HRP');
         }
 
         if (($positionOne + 7) > $length) {
             throw new Bech32Exception('Too short checksum');
         }
 
-        $hrp = pack("C*", ...array_slice($chars, 0, $positionOne));
+        $hrp = pack('C*', ...array_slice($chars, 0, $positionOne));
 
         $data = [];
 
@@ -123,7 +128,7 @@ class Bech32Decoder
             $data[] = ($chars[$i] & 0x80) ? -1 : self::CHARKEY_KEY[$chars[$i]];
         }
 
-        if (!$this->verifyChecksum($hrp, $data)) {
+        if (! $this->verifyChecksum($hrp, $data)) {
             throw new Bech32Exception('Invalid bech32 checksum');
         }
 
@@ -133,9 +138,8 @@ class Bech32Decoder
     /**
      * Verifies the checksum given $hrp and $convertedDataChars.
      *
-     * @param string $hrp
-     * @param int[]  $convertedDataChars
-     *
+     * @param  string  $hrp
+     * @param  int[]  $convertedDataChars
      * @return bool
      */
     private function verifyChecksum(string $hrp, array $convertedDataChars): bool
@@ -147,12 +151,11 @@ class Bech32Decoder
         return in_array($poly, self::ALLOWED_POLY, true);
     }
 
-
     /**
      * Expands the human-readable part into a character array for checksumming.
      *
-     * @param string $hrp
-     * @param int $hrpLen
+     * @param  string  $hrp
+     * @param  int  $hrpLen
      * @return int[]
      */
     private function hrpExpand(string $hrp, int $hrpLen): array
@@ -170,9 +173,8 @@ class Bech32Decoder
     }
 
     /**
-     * @param int[] $values
-     * @param int $numValues
-     *
+     * @param  int[]  $values
+     * @param  int  $numValues
      * @return int
      */
     private function polyMod(array $values, int $numValues): int
@@ -180,7 +182,7 @@ class Bech32Decoder
         $chk = 1;
         for ($i = 0; $i < $numValues; $i++) {
             $top = $chk >> 25;
-            $chk = ($chk & 0x1ffffff) << 5 ^ $values[$i];
+            $chk = ($chk & 0x1FFFFFF) << 5 ^ $values[$i];
 
             for ($j = 0; $j < 5; $j++) {
                 $value = (($top >> $j) & 1) ? self::GENERATOR[$j] : 0;
@@ -194,12 +196,11 @@ class Bech32Decoder
     /**
      * Converts words of $fromBits bits to $toBits bits in size.
      *
-     * @param int[] $data Character array of data to convert
-     * @param int $inLen Number of elements in array
-     * @param int $fromBits Word (bit count) size of provided data
-     * @param int $toBits Requested word size (bit count)
-     * @param bool $pad Whether to pad (only when encoding)
-     *
+     * @param  int[]  $data  Character array of data to convert
+     * @param  int  $inLen  Number of elements in array
+     * @param  int  $fromBits  Word (bit count) size of provided data
+     * @param  int  $toBits  Requested word size (bit count)
+     * @param  bool  $pad  Whether to pad (only when encoding)
      * @return int[]
      *
      * @throws Bech32Exception
@@ -237,27 +238,25 @@ class Bech32Decoder
         return $ret;
     }
 
-
     /**
-     * @param int $version
-     *
-     * @param string $program
+     * @param  int  $version
+     * @param  string  $program
      *
      * @throws RuntimeException
      */
     private function validateWitnessProgram(int $version, string $program): void
     {
         if ($version < 0 || $version > 16) {
-            throw new RuntimeException("Invalid witness version");
+            throw new RuntimeException('Invalid witness version');
         }
 
         $sizeProgram = strlen($program);
         if (($version === 0) && $sizeProgram !== 20 && $sizeProgram !== 32) {
-            throw new RuntimeException("Invalid size for V0 witness program");
+            throw new RuntimeException('Invalid size for V0 witness program');
         }
 
         if ($sizeProgram < 2 || $sizeProgram > 40) {
-            throw new RuntimeException("Witness program size was out of valid range");
+            throw new RuntimeException('Witness program size was out of valid range');
         }
     }
 }

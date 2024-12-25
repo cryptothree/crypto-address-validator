@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cryptothree\CryptoAddressValidator\Drivers;
 
 use Cryptothree\CryptoAddressValidator\Utils\Base58Decoder;
+
 use function array_keys;
 use function hash;
 use function implode;
@@ -19,7 +20,7 @@ abstract class Base58Driver extends AbstractDriver
 {
     public function match(string $address): bool
     {
-        $prefix =  implode('|', array_keys($this->options));
+        $prefix = implode('|', array_keys($this->options));
         $expr = sprintf('/^(%s)[a-km-zA-HJ-NP-Z1-9]{25,34}$/', $prefix);
 
         return preg_match($expr, $address) === 1;
@@ -28,16 +29,16 @@ abstract class Base58Driver extends AbstractDriver
     protected function getVersion($address): ?string
     {
         $hexString = Base58Decoder::decode($address, static::$base58Alphabet);
-        if (!$hexString) {
+        if (! $hexString) {
             return null;
         }
 
         $version = substr($hexString, 0, 2);
 
         $check = substr($hexString, 0, -8);
-        $check = pack("H*", $check);
-        $check = hash("sha256", $check, true);
-        $check = hash("sha256", $check);
+        $check = pack('H*', $check);
+        $check = hash('sha256', $check, true);
+        $check = hash('sha256', $check);
         $check = strtoupper($check);
         $check = substr($check, 0, 8);
 

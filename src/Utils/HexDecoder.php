@@ -27,7 +27,7 @@ class HexDecoder
         $dec = 0;
         $len = strlen($hex);
         for ($i = 1; $i <= $len; $i++) {
-            $dec = bcadd($dec, bcmul((string)hexdec($hex[$i - 1]), bcpow('16', (string)($len - $i))));
+            $dec = bcadd($dec, bcmul((string) hexdec($hex[$i - 1]), bcpow('16', (string) ($len - $i))));
         }
 
         return $dec;
@@ -37,9 +37,9 @@ class HexDecoder
     {
         $hex = '';
         do {
-            $last = (int)bcmod($dec, '16', 8);
-            $hex = dechex($last) . $hex;
-            $dec = bcdiv(bcsub($dec, (string)$last, 8), '16', 8);
+            $last = (int) bcmod($dec, '16', 8);
+            $hex = dechex($last).$hex;
+            $dec = bcdiv(bcsub($dec, (string) $last, 8), '16', 8);
         } while ($dec > 0);
 
         return $hex;

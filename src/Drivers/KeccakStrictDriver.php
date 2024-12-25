@@ -4,15 +4,13 @@ declare(strict_types=1);
 
 namespace Cryptothree\CryptoAddressValidator\Drivers;
 
-use InvalidArgumentException;
 use Cryptothree\CryptoAddressValidator\Utils\KeccakDecoder;
+
 use function intval;
-use function is_string;
 use function preg_match;
 use function str_replace;
 use function str_split;
 use function str_starts_with;
-use function strpos;
 use function strtolower;
 use function strtoupper;
 use function substr;
@@ -49,11 +47,12 @@ class KeccakStrictDriver extends AbstractDriver
         if ($this->isZeroPrefixed($value)) {
             return str_replace('0x', '', $value);
         }
+
         return $value;
     }
 
     public function isZeroPrefixed(string $value): bool
     {
-        return  str_starts_with(haystack: $value, needle: '0x');
+        return str_starts_with(haystack: $value, needle: '0x');
     }
 }

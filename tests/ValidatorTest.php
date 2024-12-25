@@ -14,18 +14,18 @@ class ValidatorTest extends TestCase
 {
     /**
      * @covers ::isValid
+     *
      * @dataProvider currencyAddressProvider
      *
-     * @param CurrencyEnum $currency
-     * @param string       $net
-     * @param bool         $expected
-     * @param string       $address
-     *
+     * @param  CurrencyEnum  $currency
+     * @param  string  $net
+     * @param  bool  $expected
+     * @param  string  $address
      * @return void
      */
     public function test_currency_validator(CurrencyEnum $currency, string $net, bool $expected, string $address): void
     {
-        $config = require __DIR__ . '/../config/address_validation.php';
+        $config = require __DIR__.'/../config/address_validation.php';
 
         $options = $config[$currency->value];
 

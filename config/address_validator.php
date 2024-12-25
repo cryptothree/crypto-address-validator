@@ -85,6 +85,13 @@ return [
     CurrencyEnum::SOL->value => [
         new DriverConfig(Drivers\SolBase58Driver::class),
     ],
+    CurrencyEnum::TON->value => [
+        new DriverConfig(
+            Drivers\TonDriver::class,
+            [true],
+            [false],
+        ),
+    ],
     CurrencyEnum::TRX->value => [
         new DriverConfig(
             Drivers\DefaultBase58Driver::class,

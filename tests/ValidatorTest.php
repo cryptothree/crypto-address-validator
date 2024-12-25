@@ -128,6 +128,18 @@ class ValidatorTest extends TestCase
             'SOL #7' => [CurrencyEnum::SOL, 'mainnet', false, '96wYtGdHsrvizfYHWhYeNw9DPfWsPvcEtgUjsfqJMtya'],
             'SOL #8' => [CurrencyEnum::SOL, 'mainnet', false, 'Ds7iTf1dhM3DAwsFPJzYkg7pyGgvJs8UBibvcWaJ98BM'],
             'SOL #9' => [CurrencyEnum::SOL, 'mainnet', false, 'o_2htHLoCu2P6tX7RrNVtiG1mYTas8NGJEVLaFEUngk'],
+            //
+            'TON #1' => [CurrencyEnum::TON, 'mainnet', true, 'EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2'],
+            'TON #2' => [CurrencyEnum::TON, 'mainnet', true, 'UQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p9dz'],
+            'TON #3' => [CurrencyEnum::TON, 'testnet', false, 'EQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p4q2'],
+            'TON #4' => [CurrencyEnum::TON, 'testnet', false, 'UQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p9dz'],
+            'TON #5' => [CurrencyEnum::TON, 'testnet', true, 'kQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74pzE8'],
+            'TON #6' => [CurrencyEnum::TON, 'testnet', true, '0QDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p2z5'],
+            'TON #7' => [CurrencyEnum::TON, 'mainnet', false, 'kQDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74pzE8'],
+            'TON #8' => [CurrencyEnum::TON, 'mainnet', false, '0QDtFpEwcFAEcRe5mLVh2N6C0x-_hJEM7W61_JLnSF74p2z5'],
+            'TON #9' => [CurrencyEnum::TON, 'mainnet', true, 'UQAD5n5HO9zCa3lTQOK_zdALUrP692QPpP14AKubUH7bF8Ak'],
+            'TON #10' => [CurrencyEnum::TON, 'mainnet', false, 'UBAD5n5HO9zCa3lTQOK_zdALUrP692QPpP14AKubUH7bF8Ak'],
+            'TON #11' => [CurrencyEnum::TON, 'mainnet', false, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'],
         ];
     }
 }

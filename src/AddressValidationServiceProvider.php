@@ -11,7 +11,7 @@ class AddressValidationServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__.'/../config/address_validation.php' => config_path('address_validation.php'),
+            __DIR__.'/../config/address_validator.php' => config_path('address_validator.php'),
         ]);
     }
 }

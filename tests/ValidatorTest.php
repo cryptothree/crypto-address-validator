@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
 use Cryptothree\CryptoAddressValidator\CryptoAddressValidator;
+use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
 
 /**
  * @coversDefaultClass \Cryptothree\CryptoAddressValidator\CryptoAddressValidator

@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Cryptothree\CryptoAddressValidator;
 
-use Cryptothree\CryptoAddressValidator\Contracts\DriverConfig;
 use Cryptothree\CryptoAddressValidator\Contracts\DriverInterface;
 use Cryptothree\CryptoAddressValidator\Contracts\ValidatorInterface;
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
 use Cryptothree\CryptoAddressValidator\Exception\InvalidAddressException;
 use Generator;
-use function app;
+
 use function config;
 
 final class CryptoAddressValidator implements ValidatorInterface
@@ -83,7 +82,7 @@ final class CryptoAddressValidator implements ValidatorInterface
      */
     public function validate(?string $address): void
     {
-        if(! $this->isValid($address)) {
+        if (! $this->isValid($address)) {
             throw new InvalidAddressException($this->currency, $address);
         }
     }

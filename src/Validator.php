@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cryptothree\CryptoAddressValidator;
 
+use Cryptothree\CryptoAddressValidator\Contracts\DriverConfig;
 use Cryptothree\CryptoAddressValidator\Contracts\DriverInterface;
 use Cryptothree\CryptoAddressValidator\Contracts\ValidatorInterface;
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Cryptothree\CryptoAddressValidator\DriverConfig;
+use Cryptothree\CryptoAddressValidator\Contracts\DriverConfig;
 use Cryptothree\CryptoAddressValidator\Drivers;
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
 

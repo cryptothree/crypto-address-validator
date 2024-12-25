@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Cryptothree\CryptoAddressValidator\DriverConfig;
+use Cryptothree\CryptoAddressValidator\Contracts\DriverConfig;
 use Cryptothree\CryptoAddressValidator\Drivers\KeccakDriver;
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
 use Cryptothree\CryptoAddressValidator\Validator;

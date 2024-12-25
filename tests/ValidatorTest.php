@@ -118,6 +118,16 @@ class ValidatorTest extends TestCase
             //
             'EOS #1' => [CurrencyEnum::EOS, 'mainnet', true, 'atticlabeosb'],
             'EOS #2' => [CurrencyEnum::EOS, 'mainnet', true, 'bitfinexeos1'],
+            //
+            'SOL #1' => [CurrencyEnum::SOL, 'mainnet', true, 'Ds9iTf1dhM3DAwsFPJzYkg7pyGgvJs8UBibvcWaJ98BM'],
+            'SOL #2' => [CurrencyEnum::SOL, 'mainnet', true, 'ob2htHLoCu2P6tX7RrNVtiG1mYTas8NGJEVLaFEUngk'],
+            'SOL #3' => [CurrencyEnum::SOL, 'testnet', false, 'A9vVkQnZn38REExiwLUGRo6Jc5s244FyDZruTGbNDeuk'],
+            'SOL #4' => [CurrencyEnum::SOL, 'testnet', true, 'JD25qVdtd65FoiXNmR89JjmoJdYk9sjYQeSTZAALFiMy'],
+            'SOL #5' => [CurrencyEnum::SOL, 'mainnet', true, 'AbJroZNQ7NJ9NWcgvFy5mLyrp38LZShtkECqDaPq31FZ'],
+            'SOL #6' => [CurrencyEnum::SOL, 'mainnet', true, '94wYtGdHsrvizfYHWhYeNw9DPfWsPvcEtgUjsfqJMtya'],
+            'SOL #7' => [CurrencyEnum::SOL, 'mainnet', false, '96wYtGdHsrvizfYHWhYeNw9DPfWsPvcEtgUjsfqJMtya'],
+            'SOL #8' => [CurrencyEnum::SOL, 'mainnet', false, 'Ds7iTf1dhM3DAwsFPJzYkg7pyGgvJs8UBibvcWaJ98BM'],
+            'SOL #9' => [CurrencyEnum::SOL, 'mainnet', false, 'o_2htHLoCu2P6tX7RrNVtiG1mYTas8NGJEVLaFEUngk'],
         ];
     }
 }

@@ -82,6 +82,9 @@ return [
             ['tltc' => null, 'rltc' => null]
         ),
     ],
+    CurrencyEnum::SOL->value => [
+        new DriverConfig(Drivers\SolBase58Driver::class),
+    ],
     CurrencyEnum::TRX->value => [
         new DriverConfig(
             Drivers\DefaultBase58Driver::class,

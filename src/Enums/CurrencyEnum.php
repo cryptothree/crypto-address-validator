@@ -15,6 +15,7 @@ enum CurrencyEnum: string
     case EOS = 'EOS'; // EOS
     case ETH = 'ETH'; // Ethereum
     case LTC = 'LTC'; // Litecoin
+    case SOL = 'SOL'; // Solana
     case TRX = 'TRX'; // Tron
     case XRP = 'XRP'; // Ripple
     case ZEC = 'ZEC'; // Zcash

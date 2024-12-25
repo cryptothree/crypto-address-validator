@@ -28,7 +28,7 @@ class KeccakDriverTest extends TestCase
     {
         $config = [new DriverConfig(KeccakDriver::class)];
 
-        $validator = new Validator(CurrencyEnum::ETHEREUM->value, $config, $net === 'mainnet');
+        $validator = new Validator(CurrencyEnum::ETH->value, $config, $net === 'mainnet');
 
         self::assertEquals($expected, $validator->isValid($address));
     }

@@ -6,16 +6,16 @@ namespace Cryptothree\CryptoAddressValidator\Enums;
 
 enum CurrencyEnum: string
 {
-    case BEACON = 'beacon';
-    case BITCOIN_CASH = 'bitcoin_cash';
-    case BITCOIN = 'bitcoin';
-    case CARDANO = 'cardano';
-    case DASHCOIN = 'dashcoin';
-    case DOGECOIN = 'dogecoin';
-    case EOS = 'eos';
-    case ETHEREUM = 'ethereum';
-    case LITECOIN = 'litecoin';
-    case RIPPLE = 'ripple';
-    case TRON = 'tron';
-    case ZCASH = 'zcash';
+    case ADA = 'ADA'; // Cardano
+    case BCH = 'BCH'; // Bitcoin Cash
+    case BSC = 'BSC'; // BNB Beacon
+    case BTC = 'BTC'; // Bitcoin
+    case DASH = 'DASH'; // Dashcoin
+    case DOGE = 'DOGE'; // Dogecoin
+    case EOS = 'EOS'; // EOS
+    case ETH = 'ETH'; // Ethereum
+    case LTC = 'LTC'; // Litecoin
+    case TRX = 'TRX'; // Tron
+    case XRP = 'XRP'; // Ripple
+    case ZEC = 'ZEC'; // Zcash
 }

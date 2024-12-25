@@ -1,0 +1,7 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "control_structure_braces": false,
+        "no_superfluous_phpdoc_tags": false
+    }
+}

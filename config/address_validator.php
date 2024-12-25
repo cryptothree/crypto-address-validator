@@ -68,7 +68,7 @@ return [
         new DriverConfig(Drivers\EosDriver::class),
     ],
     CurrencyEnum::ETH->value => [
-        new DriverConfig(Drivers\KeccakStrictDriver::class),
+        new DriverConfig(Drivers\KeccakDriver::class),
     ],
     CurrencyEnum::LTC->value => [
         new DriverConfig(

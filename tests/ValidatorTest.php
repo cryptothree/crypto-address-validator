@@ -96,8 +96,8 @@ class ValidatorTest extends TestCase
             //
             'Ethereum #1' => [CurrencyEnum::ETH, 'mainnet', true, '0xe80b351948D0b87EE6A53e057A91467d54468D91'],
             'Ethereum #2' => [CurrencyEnum::ETH, 'testnet', true, '0x799aD3Ff7Ef43DfD1473F9b8a8C4237c22D8113F'],
-            'Ethereum #3' => [CurrencyEnum::ETH, 'mainnet', false, '0xe80b351948d0b87ee6a53e057a91467d54468d91'],
-            'Ethereum #4' => [CurrencyEnum::ETH, 'testnet', false, '0x799ad3ff7ef43dfd1473f9b8a8c4237c22d8113f'],
+            'Ethereum #3' => [CurrencyEnum::ETH, 'mainnet', true, '0xe80b351948d0b87ee6a53e057a91467d54468d91'],
+            'Ethereum #4' => [CurrencyEnum::ETH, 'testnet', true, '0x799ad3ff7ef43dfd1473f9b8a8c4237c22d8113f'],
             //
             'Litecoin #1' => [CurrencyEnum::LTC, 'mainnet', true, 'MF5yqnMuNoiCiCXbZft7iFgLK5BPG5QKbE'],
             'Litecoin #2' => [CurrencyEnum::LTC, 'mainnet', false, '1QLbGuc3WGKKKpLs4pBp9H6jiQ2MgPkXRp'],

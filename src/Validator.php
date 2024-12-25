@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Cryptothree\CryptoAddressValidator;
 
-use Cryptothree\CryptoAddressValidator\Contracts\Driver;
+use Cryptothree\CryptoAddressValidator\Contracts\DriverInterface;
+use Cryptothree\CryptoAddressValidator\Contracts\ValidatorInterface;
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
 use Cryptothree\CryptoAddressValidator\Exception\InvalidAddressException;
 use Generator;
@@ -12,7 +13,7 @@ use Generator;
 use function app;
 use function config;
 
-readonly class Validator implements Contracts\Validator
+readonly class Validator implements ValidatorInterface
 {
     public function __construct(
         private string $chain,
@@ -20,7 +21,7 @@ readonly class Validator implements Contracts\Validator
         private bool $isMainnet = true
     ) {}
 
-    public static function make(CurrencyEnum $currency): Validator
+    public static function make(CurrencyEnum $currency): ValidatorInterface
     {
         return new Validator($currency->value, config("address_validator.{$currency->value}"), app()->isProduction());
     }
@@ -64,7 +65,7 @@ readonly class Validator implements Contracts\Validator
     }
 
     /**
-     * @return Generator<int, Driver>|null
+     * @return Generator<int, DriverInterface>|null
      */
     protected function getDrivers(): ?Generator
     {
@@ -78,9 +79,9 @@ readonly class Validator implements Contracts\Validator
         return null;
     }
 
-    protected function getDriver(iterable $drivers, string $address): ?Driver
+    protected function getDriver(iterable $drivers, string $address): ?DriverInterface
     {
-        /** @var Driver $driver */
+        /** @var DriverInterface $driver */
         foreach ($drivers as $driver) {
             if ($driver->match($address)) {
                 return $driver;

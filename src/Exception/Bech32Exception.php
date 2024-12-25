@@ -1,5 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Cryptothree\CryptoAddressValidator\Exception;
 
-class Bech32Exception extends \Exception {}
+use Exception;
+
+class Bech32Exception extends Exception
+{
+    //
+}

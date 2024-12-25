@@ -6,7 +6,7 @@ namespace Cryptothree\CryptoAddressValidator;
 
 use Cryptothree\CryptoAddressValidator\Contracts\Driver;
 use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
-use Cryptothree\CryptoAddressValidator\Exception\AddressValidationException;
+use Cryptothree\CryptoAddressValidator\Exception\InvalidAddressException;
 use Generator;
 
 use function app;
@@ -55,11 +55,11 @@ readonly class Validator implements Contracts\Validator
         $driver = $this->getDriver($drivers, $address);
 
         if ($driver === null) {
-            throw new AddressValidationException($this->chain, $address, false);
+            throw new InvalidAddressException(CurrencyEnum::from($this->chain), $address);
         }
 
         if (! $driver->check($address)) {
-            throw new AddressValidationException($this->chain, $address, true);
+            throw new InvalidAddressException(CurrencyEnum::from($this->chain), $address);
         }
     }
 

@@ -6,4 +6,7 @@ namespace Cryptothree\CryptoAddressValidator\Exception;
 
 use Exception;
 
-class Base32Exception extends Exception {}
+class Base32Exception extends Exception
+{
+    //
+}

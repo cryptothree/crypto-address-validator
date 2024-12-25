@@ -6,4 +6,7 @@ namespace Cryptothree\CryptoAddressValidator\Exception;
 
 use Exception;
 
-class InvalidChecksumException extends Exception {}
+class InvalidChecksumException extends Exception
+{
+    //
+}

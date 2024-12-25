@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
+namespace Cryptothree\CryptoAddressValidator\Drivers;
 
 class EosDriver extends AbstractDriver
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Utils;
+namespace Cryptothree\CryptoAddressValidator\Utils;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Exception\Base32Exception;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Exception\InvalidChecksumException;
+use Cryptothree\CryptoAddressValidator\Exception\Base32Exception;
+use Cryptothree\CryptoAddressValidator\Exception\InvalidChecksumException;
 use function array_key_exists;
 use function array_slice;
 use function array_values;

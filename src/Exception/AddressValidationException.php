@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Exception;
+namespace Cryptothree\CryptoAddressValidator\Exception;
 
 class AddressValidationException extends \RuntimeException
 {

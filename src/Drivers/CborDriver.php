@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
+namespace Cryptothree\CryptoAddressValidator\Drivers;
 
 use CBOR\ByteStringObject;
 use CBOR\Decoder;
@@ -13,7 +13,7 @@ use CBOR\Tag\GenericTag;
 use CBOR\Tag\TagManager;
 use CBOR\Tag\UnsignedBigIntegerTag;
 use Illuminate\Support\Str;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\Base58Decoder;
+use Cryptothree\CryptoAddressValidator\Utils\Base58Decoder;
 use Throwable;
 use function array_keys;
 use function array_values;

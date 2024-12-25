@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Enums\CurrencyEnum;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Validator;
+use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
+use Cryptothree\CryptoAddressValidator\Validator;
 
 /**
- * @coversDefaultClass \Merkeleon\PhpCryptocurrencyAddressValidation\Validator
+ * @coversDefaultClass \Cryptothree\CryptoAddressValidator\Validator
  */
 class ValidatorTest extends TestCase
 {

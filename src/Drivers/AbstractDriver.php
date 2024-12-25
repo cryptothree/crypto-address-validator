@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
+namespace Cryptothree\CryptoAddressValidator\Drivers;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Contracts\Driver;
+use Cryptothree\CryptoAddressValidator\Contracts\Driver;
 
 abstract class AbstractDriver implements Driver
 {

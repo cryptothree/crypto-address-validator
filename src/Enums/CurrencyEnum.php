@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Enums;
+namespace Cryptothree\CryptoAddressValidator\Enums;
 
 enum CurrencyEnum: string
 {

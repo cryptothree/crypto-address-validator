@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
+namespace Cryptothree\CryptoAddressValidator\Drivers;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\Bech32Decoder;
+use Cryptothree\CryptoAddressValidator\Utils\Bech32Decoder;
 use Throwable;
 use function array_keys;
 use function implode;

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
+namespace Cryptothree\CryptoAddressValidator\Drivers;
 
 use Illuminate\Support\Str;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\Base32Decoder;
+use Cryptothree\CryptoAddressValidator\Utils\Base32Decoder;
 use RuntimeException;
 use Throwable;
 use function array_flip;

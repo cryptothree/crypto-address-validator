@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\DriverConfig;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Drivers\KeccakDriver;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Enums\CurrencyEnum;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Validator;
+use Cryptothree\CryptoAddressValidator\DriverConfig;
+use Cryptothree\CryptoAddressValidator\Drivers\KeccakDriver;
+use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
+use Cryptothree\CryptoAddressValidator\Validator;
 
 /**
- * @coversDefaultClass \Merkeleon\PhpCryptocurrencyAddressValidation\Drivers\KeccakDriver
+ * @coversDefaultClass \Cryptothree\CryptoAddressValidator\Drivers\KeccakDriver
  */
 class KeccakDriverTest extends TestCase
 {

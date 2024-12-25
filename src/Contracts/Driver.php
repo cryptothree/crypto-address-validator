@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Contracts;
+namespace Cryptothree\CryptoAddressValidator\Contracts;
 
 interface Driver
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Utils;
+namespace Cryptothree\CryptoAddressValidator\Utils;
 
 use function bcadd;
 use function bccomp;

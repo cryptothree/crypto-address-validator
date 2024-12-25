@@ -1,8 +1,8 @@
 <?php
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Utils;
+namespace Cryptothree\CryptoAddressValidator\Utils;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Exception\Bech32Exception;
+use Cryptothree\CryptoAddressValidator\Exception\Bech32Exception;
 use RuntimeException;
 use function array_merge;
 use function array_slice;

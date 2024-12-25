@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation;
+namespace Cryptothree\CryptoAddressValidator;
 
 use Generator;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Contracts\Driver;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Enums\CurrencyEnum;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Exception\AddressValidationException;
+use Cryptothree\CryptoAddressValidator\Contracts\Driver;
+use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
+use Cryptothree\CryptoAddressValidator\Exception\AddressValidationException;
 use function app;
 use function config;
 

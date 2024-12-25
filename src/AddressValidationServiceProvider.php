@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation;
+namespace Cryptothree\CryptoAddressValidator;
 
 use Illuminate\Support\ServiceProvider;
 

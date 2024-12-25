@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation;
+namespace Cryptothree\CryptoAddressValidator;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Drivers\AbstractDriver;
+use Cryptothree\CryptoAddressValidator\Drivers\AbstractDriver;
 use function class_exists;
 
 /**

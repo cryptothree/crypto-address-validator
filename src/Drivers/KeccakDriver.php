@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
+namespace Cryptothree\CryptoAddressValidator\Drivers;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\KeccakDecoder;
+use Cryptothree\CryptoAddressValidator\Utils\KeccakDecoder;
 use function intval;
 use function strtoupper;
 

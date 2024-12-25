@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
+namespace Cryptothree\CryptoAddressValidator\Drivers;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\Base58Decoder;
+use Cryptothree\CryptoAddressValidator\Utils\Base58Decoder;
 use function array_keys;
 use function hash;
 use function implode;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Utils;
+namespace Cryptothree\CryptoAddressValidator\Utils;
 
 use Exception;
 use function bin2hex;

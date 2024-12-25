@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\DriverConfig;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Enums\CurrencyEnum;
+use Cryptothree\CryptoAddressValidator\DriverConfig;
+use Cryptothree\CryptoAddressValidator\Drivers;
+use Cryptothree\CryptoAddressValidator\Enums\CurrencyEnum;
 
 return [
     CurrencyEnum::BEACON->value => [

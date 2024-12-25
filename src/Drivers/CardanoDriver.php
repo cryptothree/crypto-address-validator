@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Merkeleon\PhpCryptocurrencyAddressValidation\Drivers;
+namespace Cryptothree\CryptoAddressValidator\Drivers;
 
-use Merkeleon\PhpCryptocurrencyAddressValidation\Exception\Bech32Exception;
-use Merkeleon\PhpCryptocurrencyAddressValidation\Utils\Bech32Decoder;
+use Cryptothree\CryptoAddressValidator\Exception\Bech32Exception;
+use Cryptothree\CryptoAddressValidator\Utils\Bech32Decoder;
 use function array_keys;
 use function implode;
 use function in_array;

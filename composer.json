@@ -10,6 +10,7 @@
             "name": "CryptoThree"
         }
     ],
+    "license": "MIT",
     "scripts": {
         "test": "@php vendor/bin/phpunit",
         "pint": "@php vendor/bin/pint"

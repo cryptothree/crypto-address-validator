@@ -8,10 +8,20 @@ use Illuminate\Support\ServiceProvider;
 
 class AddressValidationServiceProvider extends ServiceProvider
 {
+    public function register(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/address_validator.php',
+            'address_validator',
+        );
+    }
+
     public function boot(): void
     {
-        $this->publishes([
-            __DIR__.'/../config/address_validator.php' => config_path('address_validator.php'),
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/address_validator.php' => config_path('address_validator.php'),
+            ], 'address-validator-config');
+        }
     }
 }
